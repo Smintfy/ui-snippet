@@ -34,7 +34,7 @@ function AnimatedNumber({ value, placeholder }: AnimatedNumberProps) {
   );
 }
 
-function Slot(props: SlotProps & { isShaking?: boolean; isVerifying: boolean; delay: number; }) {
+function Slot(props: SlotProps & { isShaking?: boolean; isVerifying: boolean; delay: number }) {
   const placeholderChar = '0';
 
   return (
@@ -42,7 +42,7 @@ function Slot(props: SlotProps & { isShaking?: boolean; isVerifying: boolean; de
       layout
       className={cn(
         'relative flex h-[40px] w-[36px] items-center justify-center rounded-[10px] bg-[#f7f7f7] text-base font-semibold text-[#232323]',
-        props.isVerifying && 'fast-pulse duration-100 text-[#232323]/60',
+        props.isVerifying && 'fast-pulse text-[#232323]/60 duration-100',
       )}
       style={{
         animationDelay: `${props.delay}ms`,
@@ -55,7 +55,7 @@ function Slot(props: SlotProps & { isShaking?: boolean; isVerifying: boolean; de
           className={cn(
             'absolute inset-0 z-10 rounded-[10px] border-3',
             props.isShaking ? 'border-rose-400' : 'border-blue-400',
-            props.isVerifying && 'border-none'
+            props.isVerifying && 'border-none',
           )}
           transition={{ duration: 0.12, ease: 'easeInOut' }}
         />
@@ -64,7 +64,7 @@ function Slot(props: SlotProps & { isShaking?: boolean; isVerifying: boolean; de
   );
 }
 
-export default function FamilyStyleOTP() {
+export function FamilyStyleOTP() {
   const CORRECT_OTP = '123456';
   const [value, setValue] = useState('');
   const [disableSubmitButton, setDisableSubmitButton] = useState(true);
@@ -243,9 +243,7 @@ export default function FamilyStyleOTP() {
               Verifying
             </motion.div>
           ) : (
-            <span>
-              Submit
-            </span>
+            <span>Submit</span>
           )}
         </AnimatePresence>
       </button>

@@ -1,4 +1,5 @@
-import { ComponentContainer, FamilyStyleOTP, ImagePreview, MultiStep } from '@/components/ui';
+import { FamilyStyleOTP, FruitSpin, ImagePreview, MultiStep } from '@/components/snippets';
+import { ComponentContainer } from '../ui/component-container';
 
 interface ComponentContainerProps {
   name: string;
@@ -13,7 +14,7 @@ const components: ComponentContainerProps[] = [
     name: 'Image preview',
     description: <>Interaction built using shared layout animations and Radix dialog primitive.</>,
     tags: ['react', 'radix', 'motion', 'tailwind'],
-    source: 'https://github.com/Smintfy/ui-snippet/blob/main/components/ui/image-preview.tsx',
+    source: 'https://github.com/Smintfy/ui-snippet/blob/main/components/snippets/image-preview.tsx',
     children: <ImagePreview />,
   },
   {
@@ -22,7 +23,7 @@ const components: ComponentContainerProps[] = [
       <>This is a multi-step component guiding users through a process or for an onboarding.</>
     ),
     tags: ['react', 'motion', 'tailwind'],
-    source: 'https://github.com/Smintfy/ui-snippet/blob/main/components/ui/multi-step.tsx',
+    source: 'https://github.com/Smintfy/ui-snippet/blob/main/components/snippets/multi-step.tsx',
     children: <MultiStep />,
   },
   {
@@ -33,20 +34,40 @@ const components: ComponentContainerProps[] = [
         <a
           href="https://x.com/benjitaylor/status/1900685689400029562"
           target="_blank"
-          className="underline"
+          className="hover:text-primary underline"
         >
           Family
         </a>{' '}
         built on top of{' '}
-        <a href="https://input-otp.rodz.dev" target="_blank" className="underline">
+        <a
+          href="https://input-otp.rodz.dev"
+          target="_blank"
+          className="hover:text-primary underline"
+        >
           otp-input
         </a>{' '}
         by guilhermerodz. And by the way, the correct code is {'"'}123456{'"'}.
       </>
     ),
     tags: ['react', 'motion', 'tailwind'],
-    source: 'https://github.com/Smintfy/ui-snippet/blob/main/components/ui/family-style-otp.tsx',
+    source:
+      'https://github.com/Smintfy/ui-snippet/blob/main/components/snippets/family-style-otp.tsx',
     children: <FamilyStyleOTP />,
+  },
+  {
+    name: 'Fruit spin',
+    description: (
+      <>
+        A playful fruit spin game component inspired by{' '}
+        <a href="https://honk.me/" target="_blank" className="hover:text-primary underline">
+          Honk
+        </a>
+        . And by the way, please don&apos;t gamble.
+      </>
+    ),
+    tags: ['react', 'motion', 'tailwind'],
+    source: 'https://github.com/Smintfy/ui-snippet/blob/main/components/snippets/fruit-spin.tsx',
+    children: <FruitSpin />,
   },
 ];
 

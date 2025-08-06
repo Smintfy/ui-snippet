@@ -6,7 +6,7 @@ interface ComponentContainerProps {
   children: React.ReactNode;
 }
 
-export default function ComponentContainer({
+export function ComponentContainer({
   name,
   description,
   tags,
@@ -19,12 +19,12 @@ export default function ComponentContainer({
         <h2 className="font-medium">{name}</h2>
         <p className="text-tertiary">
           {description}{' '}
-          <a className="underline" target="_blank" href={`${source}`}>
+          <a className="hover:text-primary underline" target="_blank" href={`${source}`}>
             View source
           </a>
         </p>
       </div>
-      <div className="mt-6 flex items-center justify-center rounded-2xl border px-6 py-16 md:px-0">
+      <div className="relative mt-6 flex items-center justify-center rounded-2xl border px-6 py-16 md:px-0">
         {children}
       </div>
       <div className="mt-4 flex gap-2">

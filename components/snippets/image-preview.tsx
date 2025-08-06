@@ -9,7 +9,7 @@ import Image from 'next/image';
 
 const MotionImage = motion.create(Image);
 
-export default function ImagePreview() {
+export function ImagePreview() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (

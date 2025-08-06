@@ -15,7 +15,7 @@ const PrimaryButton: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = (
     <button
       type="button"
       className={cn(
-        'w-fit cursor-pointer items-center rounded-lg border border-indigo-600 bg-gradient-to-b from-indigo-500 to-indigo-600 px-3 font-medium text-white hover:bg-gradient-to-b hover:from-indigo-500/80 hover:to-indigo-600/80',
+        'w-fit cursor-pointer items-center rounded-lg border border-indigo-600 bg-gradient-to-b from-indigo-500 to-indigo-600 px-3 font-medium text-white select-none hover:bg-gradient-to-b hover:from-indigo-500/80 hover:to-indigo-600/80',
         'shadow-[0px_1px_0px_0px_rgba(255,255,255,0.10)_inset, 0px_4px_8px_-2px_rgba(0,0,0,0.05), 0px_2px_4px_-1px_rgba(0,0,0,0.05)] flex h-[40px]',
         `${className}`,
       )}
@@ -35,7 +35,7 @@ const SecondaryButton: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> =
     <button
       type="button"
       className={cn(
-        'text-tertiary flex h-[40px] w-fit cursor-pointer items-center rounded-lg px-3 font-medium',
+        'text-tertiary flex h-[40px] w-fit cursor-pointer items-center rounded-lg px-3 font-medium select-none hover:bg-neutral-100',
         `${className}`,
       )}
       {...props}
@@ -102,7 +102,7 @@ const StepThree = () => {
   );
 };
 
-export default function MultiStep() {
+export function MultiStep() {
   const [currentStep, setCurrentStep] = useState(0);
   const [clickDirection, setClickDirection] = useState(1);
   const ref = useRef(null);

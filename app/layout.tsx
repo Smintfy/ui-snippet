@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: 'uisnippet',
   description: 'Collections of ui components made by smintfy.',
   openGraph: {
-    url: 'https://uisnippet.dev',
+    url: 'https://www.uisnippet.dev',
     siteName: 'UI Snippet',
     description: 'Collections of ui components made by smintfy.',
     images: [

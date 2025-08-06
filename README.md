@@ -26,6 +26,8 @@ These are some of the people that has been inspiring me to improve my design eng
 - [Emil Kowalski](https://x.com/emilkowalski_)
 - [Mariana Castilho](https://x.com/mrncst)
 - [Jakub Krehel](https://x.com/jakubkrehel)
+- [Raphael Salaja](https://x.com/raphaelsalaja)
+- [Lochie Axon](https://x.com/lochieaxon)
 - More soon...
 
 And here are some apps that inspire me.

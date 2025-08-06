@@ -8,11 +8,7 @@ import { Toaster } from 'sonner';
 
 export default function Home() {
   return (
-    <div
-      className={cn(
-        'relative mx-auto flex max-w-[720px] flex-col px-4 font-[family-name:var(--font-inter)] md:px-0',
-      )}
-    >
+    <div className={cn('relative mx-auto flex max-w-[720px] flex-col px-4 md:px-0')}>
       <Toaster duration={6000} />
       <Header />
       <Showcase />

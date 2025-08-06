@@ -1,5 +1,9 @@
+import { SquareArrowOutUpRight } from 'lucide-react';
+import Link from 'next/link';
+
 interface ComponentContainerProps {
   name: string;
+  link: string;
   description: React.JSX.Element;
   tags: string[];
   source: string;
@@ -8,6 +12,7 @@ interface ComponentContainerProps {
 
 export function ComponentContainer({
   name,
+  link,
   description,
   tags,
   source,
@@ -24,8 +29,18 @@ export function ComponentContainer({
           </a>
         </p>
       </div>
-      <div className="relative mt-6 flex items-center justify-center rounded-2xl border px-6 py-16 md:px-0">
-        {children}
+      <div className="mt-6 flex flex-col items-center justify-center overflow-clip rounded-2xl border px-6 md:px-0">
+        <div className="flex w-full border-b bg-neutral-50 px-3 py-2">
+          <div>
+            <Link
+              href={`/${link}`}
+              className="flex size-8 cursor-pointer items-center justify-center rounded-full text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-900"
+            >
+              <SquareArrowOutUpRight className="size-4" />
+            </Link>
+          </div>
+        </div>
+        <div className="relative flex w-full justify-center py-16">{children}</div>
       </div>
       <div className="mt-4 flex gap-2">
         {tags.map((tag) => (

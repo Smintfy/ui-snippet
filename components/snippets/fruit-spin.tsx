@@ -1,10 +1,9 @@
 'use client';
 
 import { useRef, useState, useEffect, useMemo, useCallback, memo, JSX } from 'react';
+import { motion, useAnimation, animate } from 'motion/react';
 import { TextShimmer } from '@/components/ui/text-shimmer';
-import { motion, useAnimation } from 'motion/react';
 import { usePrevious } from '@/hooks/use-previous';
-import { RotateCcw } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface Fruit {
@@ -144,7 +143,7 @@ const SmoothSpinningReel = memo(
     if (isSpinning) {
       return (
         <motion.div
-          className="space-y-2 pt-1"
+          className="space-y-2 pt-1 will-change-auto"
           initial={{ y: positions.initialPosition }}
           animate={{ y: positions.finalPosition }}
           transition={{
@@ -198,7 +197,6 @@ function FruitSlots({
 }) {
   const [isDragAtEnd, setIsDragAtEnd] = useState(false);
   const [isSpinning, setIsSpinning] = useState(false);
-  const [isSpinComplete, setIsSpinComplete] = useState(false);
   const [borderColors, setBorderColors] = useState([...DEFAULT_BORDER_COLORS]);
   const [dragProgress, setDragProgress] = useState(0);
   const [isResetting, setIsResetting] = useState(false);
@@ -212,11 +210,21 @@ function FruitSlots({
     controls.set({ x: 0 });
   }, [controls]);
 
+  const handleReset = useCallback(() => {
+    setIsResetting(true);
+    setIsSpinning(false);
+    setBorderColors([...DEFAULT_BORDER_COLORS]);
+    setDragProgress(0);
+    setIsDragAtEnd(false);
+    controls.set({ x: 0 });
+    setFinalResults([0, 1, 2]);
+    setTimeout(() => setIsResetting(false), 50);
+  }, [controls, setFinalResults]);
+
   const handleSpin = useCallback(() => {
     if (isSpinning) return;
 
     setIsSpinning(true);
-    setIsSpinComplete(false);
     setBorderColors([...DEFAULT_BORDER_COLORS]);
 
     const results = Array.from({ length: 3 }, () => Math.floor(Math.random() * baseFruits.length));
@@ -224,8 +232,6 @@ function FruitSlots({
     setFinalResults(results);
 
     setTimeout(() => {
-      setIsSpinComplete(true);
-
       // Update border colors
       results.forEach((resultIndex, slotIndex) => {
         setTimeout(() => {
@@ -236,8 +242,13 @@ function FruitSlots({
           });
         }, slotIndex * 300);
       });
+
+      // Auto reset after 3 seconds
+      setTimeout(() => {
+        handleReset();
+      }, 3000);
     }, 4500);
-  }, [isSpinning, setFinalResults]);
+  }, [isSpinning, setFinalResults, handleReset]);
 
   const handleDrag = useCallback(
     (_: unknown, info: { offset: { x: number } }) => {
@@ -293,21 +304,15 @@ function FruitSlots({
         x: 0,
         transition: springTransition,
       });
-      setDragProgress(0);
+      // Animate the progress to match the button's reset animation
+      animate(dragProgress, 0, {
+        type: 'spring',
+        bounce: 0.2,
+        duration: 0.45,
+        onUpdate: (latest) => setDragProgress(latest),
+      });
     }
-  }, [isDragAtEnd, handleSpin, controls, springTransition]);
-
-  const handleReset = useCallback(() => {
-    setIsResetting(true);
-    setIsSpinning(false);
-    setIsSpinComplete(false);
-    setBorderColors([...DEFAULT_BORDER_COLORS]);
-    setDragProgress(0);
-    setIsDragAtEnd(false);
-    controls.set({ x: 0 });
-    setFinalResults([0, 1, 2]);
-    setTimeout(() => setIsResetting(false), 50);
-  }, [controls, setFinalResults]);
+  }, [isDragAtEnd, handleSpin, controls, springTransition, dragProgress]);
 
   return (
     <div className="flex w-full flex-col gap-24">
@@ -331,7 +336,7 @@ function FruitSlots({
       </div>
       <div className="rounded-full bg-[#f7f7f7] p-1">
         <div ref={constraintsRef} className="relative">
-          {!isSpinning && !isSpinComplete && (
+          {!isSpinning && (
             <TextShimmer
               duration={1.5}
               spread={3}
@@ -352,7 +357,7 @@ function FruitSlots({
           />
           <motion.button
             ref={dragButtonRef}
-            drag={isSpinning || isSpinComplete ? false : 'x'}
+            drag={isSpinning ? false : 'x'}
             dragDirectionLock
             dragConstraints={constraintsRef}
             dragElastic={0.05}
@@ -367,18 +372,6 @@ function FruitSlots({
           </motion.button>
         </div>
       </div>
-      <button
-        onClick={handleReset}
-        className={cn(
-          'absolute top-2 right-2 flex size-8 items-center justify-center rounded-lg transition-all',
-          isSpinComplete
-            ? 'cursor-pointer text-neutral-600 hover:bg-neutral-100 hover:text-neutral-800'
-            : 'cursor-not-allowed text-neutral-300 opacity-50',
-        )}
-        disabled={!isSpinComplete}
-      >
-        <RotateCcw className="size-4" />
-      </button>
     </div>
   );
 }

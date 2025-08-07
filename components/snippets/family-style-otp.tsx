@@ -205,7 +205,7 @@ export function FamilyStyleOTP() {
         }}
         className={cn(
           'flex h-[40px] w-full cursor-pointer items-center justify-center rounded-full bg-blue-400 font-semibold text-white select-none disabled:cursor-not-allowed disabled:bg-blue-400/40',
-          'transform transition-transform duration-200 ease-out hover:scale-95 active:scale-95 disabled:scale-100',
+          'transform transition-transform duration-200 ease-out hover:scale-97 active:scale-97 disabled:scale-100',
           isVerifying
             ? 'text-[#b3b3b3] disabled:bg-[#f0f0f0]'
             : 'bg-blue-400 disabled:bg-blue-400/40',

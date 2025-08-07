@@ -17,7 +17,7 @@ const components: ComponentContainerProps[] = [
     description: <>Interaction built using shared layout animations and Radix dialog primitive.</>,
     tags: ['react', 'radix', 'motion', 'tailwind'],
     source: 'https://github.com/Smintfy/ui-snippet/blob/main/components/snippets/image-preview.tsx',
-    children: <ImagePreview />,
+    children: <ImagePreview uniqueId="-showcase" />,
   },
   {
     name: 'Multi-step flow',

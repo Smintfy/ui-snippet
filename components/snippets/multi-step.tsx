@@ -139,11 +139,11 @@ export function MultiStep() {
 
   return (
     <div className="flex h-[400px] items-center">
-      <MotionConfig transition={{ type: 'spring', bounce: 0, duration: 0.4 }}>
+      <MotionConfig transition={{ type: 'spring', bounce: 0, duration: 0.3 }}>
         <motion.div
           animate={{ height }}
           className={cn(
-            'relative flex w-full max-w-[460px] flex-col overflow-hidden rounded-2xl bg-neutral-50',
+            'relative flex w-full max-w-[460px] flex-col overflow-hidden rounded-2xl bg-neutral-50 will-change-transform',
             'shadow-[0px_0px_0px_1px_rgba(0,0,0,0.10),0px_12px_24px_-6px_rgba(51,51,51,0.03),0px_8px_16px_-4px_rgba(51,51,51,0.03),0px_4px_8px_-2px_rgba(51,51,51,0.03),0px_2px_4px_-0.5px_rgba(51,51,51,0.03)]',
           )}
         >

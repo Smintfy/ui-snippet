@@ -29,18 +29,17 @@ export function ComponentContainer({
           </a>
         </p>
       </div>
-      <div className="mt-6 flex flex-col items-center justify-center overflow-clip rounded-2xl border px-6 md:px-0">
-        <div className="flex w-full border-b bg-neutral-50 px-3 py-2">
-          <div>
-            <Link
-              href={`/${link}`}
-              className="flex size-8 cursor-pointer items-center justify-center rounded-full text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-900"
-            >
-              <SquareArrowOutUpRight className="size-4" />
-            </Link>
-          </div>
+      <div className="mt-6 flex flex-col items-center justify-center rounded-2xl border">
+        <div className="flex w-full items-center justify-between rounded-t-2xl border-b bg-neutral-50 px-3 py-2">
+          <p className="text-tertiary font-mono text-xs">{link}.tsx</p>
+          <Link
+            href={`/${link}`}
+            className="text-tertiary hover:text-primary flex size-6 cursor-pointer items-center justify-center rounded transition-colors hover:bg-neutral-100"
+          >
+            <SquareArrowOutUpRight className="size-3.5" />
+          </Link>
         </div>
-        <div className="relative flex w-full justify-center py-16">{children}</div>
+        <div className="relative flex w-full justify-center px-6 py-16 md:px-0">{children}</div>
       </div>
       <div className="mt-4 flex gap-2">
         {tags.map((tag) => (

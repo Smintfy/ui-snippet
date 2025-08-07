@@ -24,6 +24,7 @@
   --color-tertiary: var(--tertiary);
   --color-border: var(--border);
   --color-accent: var(--accent);
+  --font-mono: var(--font-geist-mono);
 }
 
 :root {
@@ -38,7 +39,7 @@
 body {
   background: var(--background);
   color: var(--primary);
-  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), var(--font-geist-mono), Arial, Helvetica, sans-serif;
 }
 
 @keyframes fastPulse {

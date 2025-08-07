@@ -9,7 +9,11 @@ import Image from 'next/image';
 
 const MotionImage = motion.create(Image);
 
-export function ImagePreview() {
+interface ImagePreviewProps {
+  uniqueId?: string;
+}
+
+export function ImagePreview({ uniqueId = '' }: ImagePreviewProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -20,12 +24,12 @@ export function ImagePreview() {
         <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
           <Dialog.Trigger asChild>
             <motion.div
-              layoutId="image-preview-dialog"
+              layoutId={`image-preview-dialog${uniqueId}`}
               className="relative z-10 aspect-video w-full cursor-pointer rounded-lg"
               role="button"
             >
               <MotionImage
-                layoutId="image-preview"
+                layoutId={`image-preview${uniqueId}`}
                 src="/gyoza-shop.jpg"
                 alt="gyoza shop in Tokyo, Japan."
                 fill
@@ -57,11 +61,11 @@ export function ImagePreview() {
                         </Dialog.Description>
                       </VisuallyHidden>
                       <motion.div
-                        layoutId="image-preview-dialog"
+                        layoutId={`image-preview-dialog${uniqueId}`}
                         className="relative aspect-video w-full overflow-hidden rounded-2xl"
                       >
                         <MotionImage
-                          layoutId="image-preview"
+                          layoutId={`image-preview${uniqueId}`}
                           src="/gyoza-shop.jpg"
                           alt="gyoza shop in Tokyo, Japan."
                           fill

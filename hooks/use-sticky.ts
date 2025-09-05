@@ -19,7 +19,7 @@ export function useIsSticky<T extends HTMLElement>(ref: RefObject<T>) {
     return () => {
       observer.unobserve(current as T);
     };
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [ref]);
 
   return isSticky;
 }

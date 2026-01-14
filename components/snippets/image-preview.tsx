@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence, MotionConfig } from 'framer-motion';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
-import { Dialog } from 'radix-ui';
+import * as Dialog from '@radix-ui/react-dialog';
 import { X } from 'lucide-react';
 import { useState } from 'react';
 import Image from 'next/image';

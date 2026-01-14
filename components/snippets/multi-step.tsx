@@ -116,6 +116,8 @@ export function MultiStep() {
         return <StepTwo />;
       case 2:
         return <StepThree />;
+      default:
+        return <StepOne />;
     }
   }, [currentStep]);
 
